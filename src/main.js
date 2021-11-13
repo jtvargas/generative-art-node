@@ -76,8 +76,8 @@ const buildSetup = () => {
   fs.mkdirSync(buildDir);
 };
 
-const saveLayer = (_canvas, _edition) => {
-  fs.writeFileSync(`${buildDir}/${_edition}.png`, _canvas.toBuffer("image/png"));
+const saveLayer = (_canvas, _edition, prefixname = 'draw') => {
+  fs.writeFileSync(`${buildDir}/${prefixname}_#${_edition}.png`, _canvas.toBuffer("image/png"));
 };
 
 const addMetadata = _edition => {
@@ -108,7 +108,7 @@ const addAttributes = (_element, _layer) => {
   decodedHash.push({ [_layer.id]: _element.id });
 };
 
-const drawLayer = async (_layer, _edition) => {
+const drawLayer = async (_layer, _edition, prefixname) => {
   const rand = Math.random();
   let element =
     _layer.elements[Math.floor(rand * _layer.number)] ? _layer.elements[Math.floor(rand * _layer.number)] : null;
@@ -123,17 +123,17 @@ const drawLayer = async (_layer, _edition) => {
       _layer.size.width,
       _layer.size.height
     );
-    saveLayer(canvas, _edition);
+    saveLayer(canvas, _edition, prefixname);
   }
 };
 
-const createFiles = async edition => {
+const createFiles = async (edition, prefixname = null) => {
   const layers = layersSetup(layersOrder);
 
   let numDupes = 0;
  for (let i = 1; i <= edition; i++) {
    await layers.forEach(async (layer) => {
-     await drawLayer(layer, i);
+     await drawLayer(layer, i, prefixname);
    });
 
    let key = hash.toString();

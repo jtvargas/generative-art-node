@@ -1,17 +1,20 @@
 const layersOrder = [
-    { name: 'background', number: 1 },
-    { name: 'ball', number: 2 },
-    { name: 'eye color', number: 12 },
-    { name: 'iris', number: 3 },
-    { name: 'shine', number: 1 },
-    { name: 'shine', number: 1 },
-    { name: 'bottom lid', number: 3 },
-    { name: 'top lid', number: 3 },
+    { name: 'background', number: 5 },
+    { name: 'outfit', number: 6 },
+    { name: 'hands', number: 2 },
+    { name: 'outfitHands', number: 2 },
+    { name: 'horns', number: 4 },
+    { name: 'face', number: 3 },
+    { name: 'eyes', number: 2 },
+    { name: 'nose', number: 1 },
+    { name: 'mouth', number: 2 },
+    { name: 'secondaryAccessory', number: 4 },
+    { name: 'primaryAccessory', number: 2 },
 ];
   
 const format = {
-    width: 230,
-    height: 230
+    width: 5000,
+    height: 5000
 };
 
 const rarity = [
@@ -20,6 +23,6 @@ const rarity = [
     { key: "_sr", val: "super rare" },
 ];
 
-const defaultEdition = 5;
+const defaultEdition = 1;
 
 module.exports = { layersOrder, format, rarity, defaultEdition };
